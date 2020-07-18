@@ -1,20 +1,22 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import DrinksScreen from './screens/DrinksScreen';
+import FiltersScreen from './screens/FiltersScreen';
+
+const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Hello, React Native!</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Drinks">
+        <Stack.Screen name="Drinks" component={DrinksScreen} />
+        <Stack.Screen name="Filters" component={FiltersScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default App;
