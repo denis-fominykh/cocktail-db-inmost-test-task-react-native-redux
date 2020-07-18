@@ -1,13 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, Button } from 'react-native';
+import { StyleSheet, Button } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
+import Header from '../components/Header';
 
 const DrinksScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
-      <Text>I&apos;m in the DrinksScreen component!</Text>
-      <Button
-        title="Go to Filters Screen"
+      <Header
+        title="Drinks"
+        type="filter"
         onPress={() => navigation.navigate('Filters')}
       />
     </SafeAreaView>
@@ -17,8 +19,6 @@ const DrinksScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: '#fff',
   },
 });
