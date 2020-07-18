@@ -1,15 +1,16 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, Text, Button } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const DrinksScreen = ({ navigation }) => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text>I&apos;m in the DrinksScreen component!</Text>
       <Button
         title="Go to Filters Screen"
         onPress={() => navigation.navigate('Filters')}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -18,6 +19,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#fff',
   },
 });
 
