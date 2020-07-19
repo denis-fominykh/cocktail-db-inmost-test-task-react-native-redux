@@ -9,13 +9,13 @@ import Error from '../components/Error';
 import { getResourceItem } from '../services/cocktaildbServices';
 
 const DrinksScreen = ({ navigation, drinks, getResourceItem }) => {
-  const renderItem = ({ item }) => {
-    return <Item item={item} />;
-  };
-
   useEffect(() => {
     getResourceItem('filter', 'c', 'Ordinary Drink');
   }, [drinks]);
+
+  const renderItem = ({ item }) => {
+    return <Item item={item} />;
+  };
 
   const content = drinks ? (
     <FlatList
