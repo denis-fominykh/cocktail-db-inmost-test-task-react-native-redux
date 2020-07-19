@@ -1,22 +1,14 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, FlatList, Text } from 'react-native';
+import { StyleSheet, FlatList, View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { connect } from 'react-redux';
 
 import Header from '../components/Header';
 import Item from '../components/Item';
-import {
-  getItemsCategories,
-  getResourceItem,
-} from '../services/cocktaildbServices';
+import Error from '../components/Error';
+import { getResourceItem } from '../services/cocktaildbServices';
 
-const DrinksScreen = ({
-  navigation,
-  drinks,
-  categories,
-  getItemsCategories,
-  getResourceItem,
-}) => {
+const DrinksScreen = ({ navigation, drinks, getResourceItem }) => {
   const renderItem = ({ item }) => {
     return <Item item={item} />;
   };
@@ -32,7 +24,7 @@ const DrinksScreen = ({
       renderItem={renderItem}
     />
   ) : (
-    <Text>Something went wrong!</Text>
+    <Error />
   );
 
   return (
@@ -50,14 +42,11 @@ const DrinksScreen = ({
 const mapStateToProps = (state) => {
   return {
     drinks: state.drinks,
-    categories: state.categories,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getItemsCategories: (param, key, value) =>
-      dispatch(getItemsCategories(param, key, value)),
     getResourceItem: (param, key, value) =>
       dispatch(getResourceItem(param, key, value)),
   };
