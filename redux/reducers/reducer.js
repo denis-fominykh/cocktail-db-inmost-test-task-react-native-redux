@@ -1,5 +1,6 @@
 const initialState = {
   drinks: null,
+  categories: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -8,6 +9,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         drinks: action.payload,
+      };
+    case 'GET_CATEGORIES':
+      return {
+        ...state,
+        categories: action.payload,
       };
     default:
       return state;
