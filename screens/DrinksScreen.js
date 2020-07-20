@@ -20,7 +20,7 @@ const DrinksScreen = ({ navigation, drinks, getResourceItem }) => {
   const content = drinks ? (
     <FlatList
       data={drinks}
-      keyExtractor={(item) => item.idDrink}
+      keyExtractor={(item) => item.id}
       renderItem={renderItem}
     />
   ) : (

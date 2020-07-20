@@ -7,3 +7,8 @@ export const getCocktails = (payload) => ({
   type: 'GET_COCKTAILS',
   payload,
 });
+
+export const setCategories = (payload) => ({
+  type: 'SET_CATEGORIES',
+  payload,
+});

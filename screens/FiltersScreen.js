@@ -13,14 +13,26 @@ import Header from '../components/Header';
 import Filter from '../components/Filter';
 import Error from '../components/Error';
 import { getItemsCategories } from '../services/cocktaildbServices';
+import { setCategories } from '../redux/actions';
 
-const FiltersScreen = ({ navigation, categories, getItemsCategories }) => {
+const FiltersScreen = ({
+  navigation,
+  categories,
+  getItemsCategories,
+  setItemsCategories,
+}) => {
   useEffect(() => {
     getItemsCategories('list', 'c', 'list');
   }, [categories]);
 
   const renderItem = ({ item }) => {
-    return <Filter category={item} />;
+    return (
+      <Filter
+        category={item}
+        checked={item.checked}
+        setCategory={setItemsCategories}
+      />
+    );
   };
 
   const button = (
@@ -34,7 +46,7 @@ const FiltersScreen = ({ navigation, categories, getItemsCategories }) => {
   const content = categories ? (
     <FlatList
       data={categories}
-      keyExtractor={(item) => item.strCategory}
+      keyExtractor={(item) => item.id}
       renderItem={renderItem}
       ListFooterComponent={button}
     />
@@ -64,6 +76,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getItemsCategories: (param, key, value) =>
       dispatch(getItemsCategories(param, key, value)),
+    setItemsCategories: (value) => dispatch(setCategories(value)),
   };
 };
 

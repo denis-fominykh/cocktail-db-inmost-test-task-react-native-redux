@@ -15,6 +15,10 @@ const reducer = (state = initialState, action) => {
         ...state,
         categories: action.payload,
       };
+    case 'SET_CATEGORIES':
+      return {
+        ...state,
+      };
     default:
       return state;
   }

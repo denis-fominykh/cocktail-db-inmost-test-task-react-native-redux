@@ -1,23 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 import IconF from 'react-native-vector-icons/dist/Feather';
 
-const Filter = ({ category }) => {
-  const [checked, setChecked] = useState(true);
+const Filter = ({ category, checked, setCategory }) => {
+  const [isChecked, setIsChecked] = useState(checked);
+
+  useEffect(() => {
+    setCategory({
+      name: category.name,
+      id: category.id,
+      checked: isChecked,
+    });
+  }, [isChecked]);
 
   return (
     <TouchableOpacity
       onPress={() => setChecked((value) => !value)}
       style={styles.checkboxContainer}
     >
-      <Text style={styles.text}>{category.strCategory}</Text>
+      <Text style={styles.text}>{category.name}</Text>
       <CheckBox
         iconRight
-        checked={checked}
+        checked={isChecked}
         checkedIcon={<IconF name="check" size={35} />}
         uncheckedIcon=""
-        onPress={() => setChecked((value) => !value)}
+        onPress={() => setIsChecked((value) => !value)}
         containerStyle={styles.checkbox}
       />
     </TouchableOpacity>

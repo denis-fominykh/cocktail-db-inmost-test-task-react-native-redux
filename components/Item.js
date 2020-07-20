@@ -4,8 +4,8 @@ import { StyleSheet, View, Image, Text } from 'react-native';
 const Item = ({ item }) => {
   return (
     <View style={styles.itemContainer}>
-      <Image source={{ uri: item.strDrinkThumb }} style={styles.image} />
-      <Text style={styles.itemText}>{item.strDrink}</Text>
+      <Image source={{ uri: item.img }} style={styles.image} />
+      <Text style={styles.itemText}>{item.name}</Text>
     </View>
   );
 };

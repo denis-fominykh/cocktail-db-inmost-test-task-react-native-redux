@@ -1,3 +1,3 @@
-import { getCategories, getCocktails } from './actions';
+import { getCategories, getCocktails, setCategories } from './actions';
 
-export { getCategories, getCocktails };
+export { getCategories, getCocktails, setCategories };
