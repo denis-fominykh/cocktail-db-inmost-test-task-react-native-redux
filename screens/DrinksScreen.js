@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, FlatList, View, Text } from 'react-native';
+import { StyleSheet, SectionList, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { connect } from 'react-redux';
 
@@ -13,15 +13,14 @@ const DrinksScreen = ({ navigation, drinks, getResourceItem }) => {
     getResourceItem('filter', 'c', 'Ordinary Drink');
   }, [drinks]);
 
-  const renderItem = ({ item }) => {
-    return <Item item={item} />;
-  };
-
   const content = drinks ? (
-    <FlatList
-      data={drinks}
-      keyExtractor={(item) => item.id}
-      renderItem={renderItem}
+    <SectionList
+      sections={drinks}
+      keyExtractor={(item, index) => item + index}
+      renderItem={({ item }) => <Item item={item} />}
+      renderSectionHeader={({ section: { title } }) => (
+        <Text style={styles.categoryTitle}>{title}</Text>
+      )}
     />
   ) : (
     <Error />
@@ -56,6 +55,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  categoryTitle: {
+    fontSize: 14,
+    color: '#7E7E7E',
+    backgroundColor: '#fff',
+    paddingLeft: 20,
+    paddingTop: 20,
   },
 });
 
