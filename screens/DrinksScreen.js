@@ -17,10 +17,14 @@ const DrinksScreen = ({ navigation, drinks, getResourceItem }) => {
     <SectionList
       sections={drinks}
       keyExtractor={(item, index) => item + index}
-      renderItem={({ item }) => <Item item={item} />}
-      renderSectionHeader={({ section: { title } }) => (
-        <Text style={styles.categoryTitle}>{title}</Text>
+      renderItem={({ item, section: { checked } }) => (
+        <Item item={item} checked={checked} />
       )}
+      renderSectionHeader={({ section: { title, checked } }) => {
+        return checked ? (
+          <Text style={styles.categoryTitle}>{title}</Text>
+        ) : null;
+      }}
     />
   ) : (
     <Error />

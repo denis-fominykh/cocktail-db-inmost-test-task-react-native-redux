@@ -1,13 +1,17 @@
 import React from 'react';
 import { StyleSheet, View, Image, Text } from 'react-native';
 
-const Item = ({ item }) => {
-  return (
-    <View style={styles.itemContainer}>
-      <Image source={{ uri: item.img }} style={styles.image} />
-      <Text style={styles.itemText}>{item.name}</Text>
-    </View>
-  );
+const Item = ({ item, checked }) => {
+  if (checked) {
+    return (
+      <View style={styles.itemContainer}>
+        <Image source={{ uri: item.img }} style={styles.image} />
+        <Text style={styles.itemText}>{item.name}</Text>
+      </View>
+    );
+  }
+
+  return null;
 };
 
 const styles = StyleSheet.create({
