@@ -14,15 +14,19 @@ const _transformCategoriesData = (data) => {
 };
 
 const _transformCocktailsData = (data, value) => {
-  return data.map((item) => {
-    return {
-      name: item.strDrink,
-      img: item.strDrinkThumb,
-      id: item.idDrink,
-      category: value,
+  return [
+    {
+      title: value,
+      data: data.map((item) => {
+        return {
+          name: item.strDrink,
+          img: item.strDrinkThumb,
+          id: item.idDrink,
+        };
+      }),
       checked: true,
-    };
-  });
+    },
+  ];
 };
 
 export const getItemsCategories = (param, key, value) => (dispatch) => {
