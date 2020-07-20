@@ -16,7 +16,7 @@ const Filter = ({ category, checked, setCategory }) => {
 
   return (
     <TouchableOpacity
-      onPress={() => setChecked((value) => !value)}
+      onPress={() => setIsChecked((value) => !value)}
       style={styles.checkboxContainer}
     >
       <Text style={styles.text}>{category.name}</Text>
