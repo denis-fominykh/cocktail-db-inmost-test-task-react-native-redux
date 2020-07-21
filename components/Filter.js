@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 import IconF from 'react-native-vector-icons/dist/Feather';
+import IconE from 'react-native-vector-icons/dist/EvilIcons';
 
 const Filter = ({ category, checked, setCategory }) => {
   const [isChecked, setIsChecked] = useState(checked);
@@ -15,20 +16,17 @@ const Filter = ({ category, checked, setCategory }) => {
   }, [isChecked]);
 
   return (
-    <TouchableOpacity
-      onPress={() => setIsChecked((value) => !value)}
-      style={styles.checkboxContainer}
-    >
+    <View style={styles.checkboxContainer}>
       <Text style={styles.text}>{category.name}</Text>
       <CheckBox
         iconRight
         checked={isChecked}
-        checkedIcon={<IconF name="check" size={35} />}
-        uncheckedIcon=""
+        checkedIcon={<IconF name="check" size={35} color="black" />}
+        uncheckedIcon={<IconE name="close" size={35} color="white" />}
         onPress={() => setIsChecked((value) => !value)}
         containerStyle={styles.checkbox}
       />
-    </TouchableOpacity>
+    </View>
   );
 };
 

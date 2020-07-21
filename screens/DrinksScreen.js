@@ -6,12 +6,31 @@ import { connect } from 'react-redux';
 import Header from '../components/Header';
 import Item from '../components/Item';
 import Error from '../components/Error';
-import { getResourceItem } from '../services/cocktaildbServices';
+import {
+  getItemsCategories,
+  getResourceItem,
+} from '../services/cocktaildbServices';
 
-const DrinksScreen = ({ navigation, drinks, getResourceItem }) => {
+const DrinksScreen = ({
+  navigation,
+  drinks,
+  categories,
+  getItemsCategories,
+  getResourceItem,
+}) => {
   useEffect(() => {
-    getResourceItem('filter', 'c', 'Ordinary Drink');
-  }, [drinks]);
+    getItemsCategories('list', 'c', 'list');
+  }, []);
+
+  useEffect(() => {
+    if (categories) {
+      categories.forEach((item) => {
+        if (item.checked) {
+          getResourceItem('filter', 'c', item.name);
+        }
+      });
+    }
+  }, [categories]);
 
   const content = drinks ? (
     <SectionList
@@ -45,6 +64,7 @@ const DrinksScreen = ({ navigation, drinks, getResourceItem }) => {
 const mapStateToProps = (state) => {
   return {
     drinks: state.drinks,
+    categories: state.categories,
   };
 };
 
@@ -52,6 +72,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getResourceItem: (param, key, value) =>
       dispatch(getResourceItem(param, key, value)),
+    getItemsCategories: (param, key, value) =>
+      dispatch(getItemsCategories(param, key, value)),
   };
 };
 

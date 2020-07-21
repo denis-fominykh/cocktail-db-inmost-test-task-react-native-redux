@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   StyleSheet,
   View,
@@ -12,29 +12,9 @@ import { connect } from 'react-redux';
 import Header from '../components/Header';
 import Filter from '../components/Filter';
 import Error from '../components/Error';
-import { getItemsCategories } from '../services/cocktaildbServices';
 import { setCategories } from '../redux/actions';
 
-const FiltersScreen = ({
-  navigation,
-  categories,
-  getItemsCategories,
-  setItemsCategories,
-}) => {
-  useEffect(() => {
-    getItemsCategories('list', 'c', 'list');
-  }, [categories]);
-
-  const renderItem = ({ item }) => {
-    return (
-      <Filter
-        category={item}
-        checked={item.checked}
-        setCategory={setItemsCategories}
-      />
-    );
-  };
-
+const FiltersScreen = ({ navigation, categories, setItemCategories }) => {
   const button = (
     <TouchableOpacity onPress={() => {}} style={styles.buttonContainer}>
       <View style={styles.button}>
@@ -46,8 +26,14 @@ const FiltersScreen = ({
   const content = categories ? (
     <FlatList
       data={categories}
-      keyExtractor={(item) => item.id}
-      renderItem={renderItem}
+      keyExtractor={(item) => item.id.toString()}
+      renderItem={({ item }) => (
+        <Filter
+          category={item}
+          checked={item.checked}
+          setCategory={setItemCategories}
+        />
+      )}
       ListFooterComponent={button}
     />
   ) : (
@@ -74,9 +60,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getItemsCategories: (param, key, value) =>
-      dispatch(getItemsCategories(param, key, value)),
-    setItemsCategories: (value) => dispatch(setCategories(value)),
+    setItemCategories: (value) => dispatch(setCategories(value)),
   };
 };
 
