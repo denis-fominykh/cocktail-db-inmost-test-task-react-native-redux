@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 
 import Header from '../components/Header';
 import Filter from '../components/Filter';
-import Error from '../components/Error';
+import Spinner from '../components/Spinner';
 import { setCategories } from '../redux/actions';
 import { getResourceItem } from '../services/cocktaildbServices';
 
@@ -62,7 +62,7 @@ const FiltersScreen = ({
       ListFooterComponent={button}
     />
   ) : (
-    <Error />
+    <Spinner />
   );
 
   return (

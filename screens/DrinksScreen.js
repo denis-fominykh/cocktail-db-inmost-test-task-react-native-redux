@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import Header from '../components/Header';
 import Item from '../components/Item';
-import Error from '../components/Error';
+import Spinner from '../components/Spinner';
 import {
   getItemsCategories,
   getResourceItem,
@@ -46,7 +46,7 @@ const DrinksScreen = ({
       }}
     />
   ) : (
-    <Error />
+    <Spinner />
   );
 
   return (
