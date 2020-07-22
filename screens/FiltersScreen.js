@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -13,10 +13,35 @@ import Header from '../components/Header';
 import Filter from '../components/Filter';
 import Error from '../components/Error';
 import { setCategories } from '../redux/actions';
+import { getResourceItem } from '../services/cocktaildbServices';
 
-const FiltersScreen = ({ navigation, categories, setItemCategories }) => {
+const FiltersScreen = ({
+  navigation,
+  categories,
+  setItemCategories,
+  getResourceItem,
+}) => {
+  const [isLoaded, setIsLoaded] = useState(true);
+
+  useEffect(() => {
+    if (!isLoaded) {
+      categories.forEach((item) => {
+        if (item.checked) {
+          getResourceItem('filter', 'c', item.name);
+        }
+      });
+    }
+    setIsLoaded(true);
+  }, [isLoaded]);
+
   const button = (
-    <TouchableOpacity onPress={() => {}} style={styles.buttonContainer}>
+    <TouchableOpacity
+      onPress={() => {
+        setIsLoaded(false);
+        navigation.goBack();
+      }}
+      style={styles.buttonContainer}
+    >
       <View style={styles.button}>
         <Text style={styles.buttonText}>APPLY</Text>
       </View>
@@ -61,6 +86,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setItemCategories: (value) => dispatch(setCategories(value)),
+    getResourceItem: (param, key, value) =>
+      dispatch(getResourceItem(param, key, value)),
   };
 };
 
