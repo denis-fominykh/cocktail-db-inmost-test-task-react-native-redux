@@ -38,8 +38,6 @@ const updateCategories = (state, newItem) => {
   const itemIndex = categories.findIndex((item) => item.name === newItem.name);
   const newData = updateCategoriesData(categories, itemIndex, newItem);
 
-  console.log('categories', newData);
-
   return {
     ...state,
     categories: newData,
