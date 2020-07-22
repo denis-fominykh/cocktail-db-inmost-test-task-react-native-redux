@@ -1,6 +1,9 @@
-# [The Cocktail DB](https://www.thecocktaildb.com/api.php) mobile app — [Inmost](http://inmost.pro) Test Task
+# The [Cocktail DB](https://www.thecocktaildb.com/api.php) mobile app — [Inmost](http://inmost.pro) Test Task
 
-This project was bootstrapped with [React Native CLI](https://reactnative.dev/docs/environment-setup).
+##### This project was bootstrapped with [React Native CLI](https://reactnative.dev/docs/environment-setup).
+##### cocktaildb-expo.zip — this project was bootstrapped with [Expo CLI](https://expo.io).
+
+![screens](./assets/screens.png)
 
 ## How to use it?
 
