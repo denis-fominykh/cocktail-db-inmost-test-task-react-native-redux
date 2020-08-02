@@ -5,11 +5,11 @@
 
 ![screens](./assets/screens.png)
 
-## How to use it?
+## Available Scripts
 
-### Download manually
+In the project directory, you can run:
 
-Install:
+#### Install:
 
 ```bash
 yarn install
@@ -17,15 +17,27 @@ yarn install
 npm install
 ```
 
-Run:
+Install the dependencies in the local `node_modules` folder. The command will install all modules listed as dependencies in `package.json`.
 
-```bash
-yarn start
-# or
-npm run start
+#### Pod Install:
+
+```
+npx pod-install
 ```
 
-Opening an iOS simulator:
+This command is to be used to retrieve the pods for the project.
+
+#### Build .apk:
+
+```
+cd android
+./gradlew assembleRelease
+```
+
+Generating the release APK for Android.<br />
+Path to file: `android/app/build/outputs/apk/release/app-release.apk`
+
+#### iOS:
 
 ```bash
 yarn ios
@@ -33,7 +45,12 @@ yarn ios
 npm run ios
 ```
 
-Opening an Android simulator:
+Opening an iOS simulator.
+
+The screen will reload if you make edits.<br />
+You will also see any lint errors on the screen.
+
+#### Android:
 
 ```bash
 yarn android
@@ -41,7 +58,22 @@ yarn android
 npm run android
 ```
 
-[Eslint](https://eslint.org):
+Opening an Android simulator.
+
+The screen will reload if you make edits.<br />
+You will also see any lint errors on the screen.
+
+#### Prettier:
+
+```bash
+yarn prettier
+# or
+npm run prettier
+```
+
+To automatically format your files using [Prettier](https://prettier.io/).
+
+#### Lint:
 
 ```bash
 yarn lint
@@ -49,16 +81,14 @@ yarn lint
 npm run lint
 ```
 
-[Prettier](https://prettier.io):
-```bash
-yarn prettier
-# or
-npm run prettier
-```
+To automatically lint your code using [ESLint](https://eslint.org).
 
-[Jest](https://jestjs.io):
+#### Test:
+
 ```bash
 yarn test
 # or
 npm run test
 ```
+
+Launches the test runner in the interactive watch mode using [Jest](https://jestjs.io).
